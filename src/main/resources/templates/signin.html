@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="layout::Layout(~{::section})">
+
+<head>
+    <meta charset="UTF-8" >
+    <title>signin</title>
+  </head>
+<body>
+<section>
+    <div class="container w-50 m-auto shadow-lg p-3">
+        <p th:if="${param.error}" class="error">
+            invalid username and password
+            <strong role="alert" class="text-danger">
+                [[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]
+            </strong>
+
+        </p>
+<!--        <form action="userLogin" method="post">-->
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="exampleInputusername">Email address</label>
+                <input type="text" class="form-control" id="exampleInputusername" name="username" aria-describedby="usernameHelp" placeholder="Enter UserName">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="password">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</section>
+
+</body>
+</html>
